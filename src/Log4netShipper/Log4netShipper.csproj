@@ -7,9 +7,15 @@
     <AssemblyName>Logzio.DotNet.Log4net</AssemblyName>
     <RootNamespace>Logzio.DotNet.Log4net</RootNamespace>
     <PackageId>Logzio.DotNet.Log4net</PackageId>
+    <Authors>Maor Rosenfeld</Authors>
+    <Company>Logz.Io</Company>
+    <Description>A log4net appender that sends logs to the logz.io app
+This log4net appender will send logs, in bulks, to the logz.io bulk HTTP service. Configurations are available, see the github readme for details.
+    &lt;tags&gt;logging log logzio log4net&lt;</Description>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ILRepack" Version="2.0.13" />
     <PackageReference Include="log4net" Version="2.0.8" />
   </ItemGroup>
 

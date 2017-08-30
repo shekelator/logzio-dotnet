@@ -5,11 +5,22 @@
     <RootNamespace>Logzio.DotNet.NLog</RootNamespace>
     <Version>3.0.0-pre</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Maor Rosenfeld</Authors>
+    <Company>Logz.Io</Company>
+    <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/logzio/logzio-dotnet</PackageProjectUrl>
+    <Description>An NLog target that sends logs to the logz.io app.
+This NLog target will send logs, in bulks, to the logz.io bulk HTTP service. Configurations are available, see the github readme for details.</Description>
+    <PackageTags>logging log logzio nlog</PackageTags>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="ILRepack" Version="2.0.13" />
     <PackageReference Include="NLog" Version="5.0.0-beta09" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="&quot;~\.nuget\packages\ilrepack\2.0.13\tools\ILRepack.exe&quot; /out:$(TargetDir)Logzio.DotNet.NLogShipper.dll $(TargetDir)Logzio.DotNet.Core.dll $(TargetDir)Logzio.DotNet.NLog.dll /lib:~\nuget\packages\NETStandard.Library\tools\1.6.1\" />
+  </Target>
 </Project>
