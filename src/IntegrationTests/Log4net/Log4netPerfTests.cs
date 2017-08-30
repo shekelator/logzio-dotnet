@@ -55,12 +55,13 @@ namespace Logzio.DotNet.IntegrationTests.Log4net
             logzioAppender.Close();
             LogManager.Shutdown();
 
-            _dummy.Requests.Count.ShouldBeEquivalentTo(Math.Ceiling((decimal) (logsAmount / bufferSize)));
+            _dummy.Requests.Count.Should().BeInRange((int)Math.Ceiling((decimal) (logsAmount / bufferSize)),
+                (int)Math.Floor((decimal)logsAmount / bufferSize));
         }
 
         private static LogzioAppender SetupAppender(int bufferSize)
         {
-            var hierarchy = (Hierarchy) LogManager.GetRepository();
+            var hierarchy = (Hierarchy) LogManager.GetRepository(typeof(LogzioAppender).Assembly);
             var logzioAppender = new LogzioAppender();
             logzioAppender.AddToken("DKJiomZjbFyVvssJDmUAWeEOSNnDARWz");
             logzioAppender.AddListenerUrl(LogzioListenerDummy.DefaultUrl);

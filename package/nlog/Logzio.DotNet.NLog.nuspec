@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Logzio.DotNet.NLog</id>
-    <version>0.20</version>
+    <version>0.21-pre</version>
     <title>Logzio.DotNet.NLog</title>
     <authors>Logz.io</authors>
     <owners>Maor Rosenfeld</owners>
@@ -13,8 +13,8 @@
 	<description>This NLog target will send logs, in bulks, to the logz.io bulk HTTP service. Configurations are available, see the github readme for details.</description>    
     <tags>logging log logzio nlog</tags>
 	<dependencies>
-      <dependency id="Newtonsoft.Json" version="9.0" />
-      <dependency id="NLog" version="4.4.0" />
+      <dependency id="Newtonsoft.Json" version="10.0.3" />
+      <dependency id="NLog" version="5.0.0" />
     </dependencies>
   </metadata>
 </package>

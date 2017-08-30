@@ -62,7 +62,8 @@ namespace Logzio.DotNet.IntegrationTests.NLog
             new Bootstraper().Resolve<IShipper>().WaitForSendLogsTask();
             LogManager.Shutdown();
 
-            _dummy.Requests.Count.ShouldBeEquivalentTo(Math.Ceiling((decimal) (logsAmount / 100)));
+            _dummy.Requests.Count.Should().BeInRange((int) Math.Ceiling((decimal) (logsAmount / 100)),
+                (int)Math.Floor((decimal)logsAmount / 100));
         }
     }
 }

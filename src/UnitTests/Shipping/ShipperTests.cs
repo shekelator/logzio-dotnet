@@ -54,10 +54,10 @@ namespace Logzio.DotNet.UnitTests.Shipping
             _target.WaitForSendLogsTask();
 
 			var calls = _bulkSender.ReceivedCalls().ToList();
-			calls.Count.ShouldBeEquivalentTo(4);
+			calls.Count.Should().Be(4);
 			foreach (var call in calls)
 			{
-				((ICollection<LogzioLoggingEvent>)call.GetArguments()[0]).Count.ShouldBeEquivalentTo(10);
+				((ICollection<LogzioLoggingEvent>)call.GetArguments()[0]).Count.Should().Be(10);
 			}
 		}
 
